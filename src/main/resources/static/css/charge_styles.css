@@ -1,0 +1,76 @@
+/* 重置默认的页面样式 */
+body {
+    margin: 0; /* 清除页面边距 */
+    padding: 0; /* 清除页面内边距 */
+    background-image: url('https://img1.imgtp.com/2023/09/04/XFmxKJ6j.jpg'); /* 设置背景图片的URL */
+    background-size: cover; /* 使背景图片覆盖整个页面 */
+    background-repeat: no-repeat; /* 禁止背景图片重复 */
+    background-attachment: fixed; /* 固定背景图片不滚动 */
+    font-family: Arial, sans-serif; /* 设置页面字体为Arial或sans-serif字体族 */
+}
+/* 样式化页面头部 */
+#header {
+    text-align: center; /* 文字居中对齐 */
+    padding: 20px 0; /* 上下内边距为20px，左右内边距为0 */
+}
+
+/* 样式化头部中的图像 */
+#header img {
+    width: 100px; /* 设置头部图片的宽度 */
+    height: 100px; /* 设置头部图片的高度 */
+}
+
+/* 容器样式 */
+.container {
+    max-width: 800px; /* 设置容器的最大宽度 */
+    margin: 0 auto; /* 水平居中容器 */
+    padding: 40px; /* 设置容器内边距 */
+    background-color: rgba(255, 255, 255, 0.8); /* 设置容器背景颜色及透明度 */
+    border-radius: 5px; /* 设置容器边框圆角 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* 设置容器阴影 */
+    text-align: center; /* 文字居中对齐 */
+}
+/* 页面标题样式 */
+.header {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+/* 输入框和标签样式 */
+.input-label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.amount-input {
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* 按钮样式 */
+.button-container {
+    margin-top: 30px;
+}
+
+.recharge-button,
+.return-button {
+    padding: 15px 40px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.recharge-button:hover,
+.return-button:hover {
+    background-color: #0056b3;
+}

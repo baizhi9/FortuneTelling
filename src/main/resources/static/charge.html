@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>充值</title>
+    <link rel="stylesheet" href="css/charge_styles.css"> <!-- 将样式移到单独的CSS文件 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="header">
+    <img src="https://img1.imgtp.com/2023/09/04/t5NsKc3K.png" alt="Header Image"> <!-- 替换 'your-header-image-url.jpg' 为您的顶部图片URL -->
+</div>
+<div class="container">
+    <h1 class="header">欢迎充值</h1>
+    <!-- 显示充值金额 -->
+    <div id="rechargeAmountDisplay" class="balance-text">
+        <label for="amount" class="input-label">请输入充值金额：</label>
+        <input type="text" id="amount" class="amount-input" placeholder="例如：100">
+    </div>
+    <!-- 充值按钮和返回按钮 -->
+    <div class="button-container">
+        <button id="rechargeButton" class="recharge-button" onclick="charge()">立即充值</button>
+        <a href="./index.html">
+            <button id="returnButton" class="return-button">返回首页</button>
+        </a>
+    </div>
+</div>
+
+<!-- AJAX -->
+<script>
+    function charge() {
+        var amount = document.getElementById("amount").value;
+
+        // 创建一个AJAX请求
+        $.ajax({
+            url: '/user/recharge',
+            type: 'POST', // 或者您可以将类型更改为'GET'，根据您的接口要求
+            data: { money: parseInt(amount) }, // 将金额作为POST数据发送到接口
+            success: function(response) {
+                // 在这里处理成功的响应
+                console.log("充值成功");
+                alert(response);
+                updateDatabaseBalance();
+            },
+            error: function(xhr, status, error) {
+                // 在这里处理错误响应
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function updateDatabaseBalance() {
+        // 创建一个AJAX请求
+        $.ajax({
+            url: '/user/balance',
+            type: 'POST',
+            success: function(response) {
+                // 处理成功的响应
+                console.log("更新数据库余额成功");
+            },
+            error: function(xhr, status, error) {
+                // 处理错误响应
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>
+</body>
+</html>

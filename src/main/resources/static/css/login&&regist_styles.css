@@ -1,0 +1,60 @@
+body {
+    background-image: url('https://img1.imgtp.com/2023/09/04/XFmxKJ6j.jpg'); /* 设置背景图片的URL */
+    background-size: cover; /* 使背景图片覆盖整个页面 */
+    background-repeat: no-repeat; /* 设置背景图片不重复 */
+    background-attachment: fixed; /* 设置背景图片不随网页滚动 */
+    font-family: Arial, sans-serif; /* 设置页面字体为Arial或sans-serif字体族 */
+}
+#header {
+    text-align: center;
+    padding: 20px 0;
+}
+#header img {
+    width: 100px;
+    height: 100px;
+}
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+h1 {
+    margin-bottom: 20px; /* 底部外边距为20px */
+    font-size: 28px;
+    color: #007bff;
+}
+label {
+    text-align: left; /* 左对齐文本 */
+}
+.AP {
+    width: 200px;
+    margin: 20px 0;
+    outline: none;
+    border: 0;
+    padding: 10px;
+    font: 900 15px '';
+    margin-bottom: 20px;
+}
+.text {
+    text-align: right; /* 左对齐文本 */
+    font-size: smaller;
+    margin-top: 1px;
+    margin-bottom: 25px;
+}
+.btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login&&regist_styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="header">
+    <img src="https://img1.imgtp.com/2023/09/04/t5NsKc3K.png" alt="Header Image">
+</div>
+
+<div class="container">
+    <h1>登录账号</h1>
+    <!-- 账号 -->
+    <label>账号：</label>
+    <input type="text" class="AP" placeholder="ACCOUNT" id="username">
+    <br>
+    <!-- 密码 -->
+    <label>密码：</label>
+    <input type="password" class="AP" placeholder="PASSWORD" id="password">
+    <br>
+    <!-- 注册页面 -->
+    <div class="text">
+        <label>还没有账号？</label>
+        <a href="./regist.html">点击这里注册</a>
+    </div>
+
+    <!-- 登录链接 -->
+    <a class="btn" onclick="login()">SIGN IN</a>
+</div>
+
+<!-- ajax -->
+<script>
+    function login() {
+        if (!$("#username").val() || !$("#password").val()) {
+            alert("请输入信息");
+            return false;
+        }
+        $.post("/user/login", {
+            "name": $("#username").val(),
+            "pwd": $("#password").val()
+        }, function (response) {
+            console.info(response);
+            if (!response || response.errorMsg) {
+                alert("登录错误");
+                return false;
+            } else {
+                location.href = "index.html";
+            }
+        })
+    }
+</script>
+</body>
+</html>

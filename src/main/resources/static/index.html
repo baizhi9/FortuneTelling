@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="css/index_styles.css">
+    <title>算命</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <img src="https://img1.imgtp.com/2023/09/04/t5NsKc3K.png" alt="Header Image"> <!-- 替换 'your-header-image-url.jpg' 为您的顶部图片URL -->
+</div>
+<div class="container">
+    <h1>算命</h1>
+    <!-- 出生日期 -->
+    <div>
+        <label for="birthdate">出生日期:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+        <br>
+    </div>
+    <!-- 性别 -->
+    <div>
+        <label for="gender">性别:</label>
+        <select id="gender" name="gender">
+            <option value="male">男性</option>
+            <option value="female">女性</option>
+            <option value="other">其他</option>
+        </select>
+        <br>
+    </div>
+    <!-- 出生时间 -->
+    <div>
+        <label for="birthtime">出生时间:</label>
+        <input type="time" id="birthtime" name="birthtime" required>
+        <br>
+    </div>
+    <!-- 充值按钮 -->
+    <div class="recharge-container">
+        <a href="./charge.html">
+            <button id="rechargeButton" class="recharge-button">充值</button>
+        </a>
+    </div>
+    <!-- 显示余额 -->
+    <div id="balanceDisplay" class="balance-right">
+        <div id="balance">当前余额：<span id="balanceValue"></span>元</div>
+    </div>
+    <!-- 查看历史内容按钮 -->
+    <div class="history-button-container">
+        <button id="historyButton" class="history-button">查看历史内容</button>
+    </div>
+    <!-- 开始算命 -->
+    <button id="outputButton">开始算命</button>
+    <!-- 退出按钮 -->
+    <a href="login.html">
+        <button id="logoutButton">退出</button>
+    </a>
+    <!-- 备注 -->
+    <div class="disclaimer">
+        注：算命一元一次
+    </div>
+</div>
+<!-- ajax1 -->
+<script>
+    $("#outputButton").click(function() {
+        // 获取用户输入的出生日期
+        var birthdate = $("#birthdate").val();
+
+        // 提取出生年、月、日
+        var year = birthdate.substring(0, 4);
+        var month = birthdate.substring(5, 7);
+        var day = birthdate.substring(8, 10);
+
+        // 发送ajax请求
+        $.ajax({
+            url: '/user/fate',
+            type: 'GET',
+            data: {
+                'year': year,
+                'month': month,
+                'day': day
+            },
+            success: function (response) {
+                // 使用弹窗显示命运结果
+                alert(response);
+                //更新数据库余额
+                updateDatabaseBalance()
+            },
+            error: function (error) {
+                // 处理错误情况
+                console.error('Error:', error);
+                alert('无法获取命运结果，请重试。');
+            }
+        });
+    });
+
+    function updateDatabaseBalance() {
+        // 创建一个AJAX请求
+        $.ajax({
+            url: '/user/balance',
+            type: 'POST',
+            success: function (response) {
+                // 处理成功的响应
+                console.log("更新数据库余额成功");
+                $('#balanceValue').text(response);
+            },
+            error: function (xhr, status, error) {
+                // 处理错误响应
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>
+
+<!-- ajax2 -->
+<script>
+    $("#historyButton").click(function() {
+        // 发送ajax请求
+        $.ajax({
+            url: '/user/history',
+            type: 'GET',
+            success: function (response) {
+                // 使用弹窗显示历史记录
+                alert(response);
+            },
+            error: function (error) {
+                // 处理错误情况
+                console.error('Error:', error);
+                alert('无法获取历史记录，请重试。');
+            }
+        });
+    });
+</script>
+
+<!--  ajax3  -->
+<script>
+    $.ajax({
+        url: '/user/balance',
+        type: 'POST',
+        success: function(response) {
+            // 在这里处理响应数据并更新页面上的余额显示
+            $('#balanceValue').text(response);
+        },
+        error: function(xhr, status, error) {
+            // 在这里处理错误情况
+            console.error('Error:', error);
+        }
+    });
+</script>
+</body>
+</html>
