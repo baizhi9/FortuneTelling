@@ -2,7 +2,7 @@
 
 使用技术：springboot + shiro + mybatis-plus
 
-功能：调用第三方算命api、单点登录、计费功能
+功能：调用第三方算命api、登录注册、计费功能
 
 使用指南
 
