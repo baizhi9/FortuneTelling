@@ -10,7 +10,9 @@
 
     2.修改FateUtils中的APP_KEY为自己的，才能使用第三方提供的算命服务
 
-    3.删除com.baizhi.logs下的所有文件。因为程序会自动存储每个用户算命的结果到自动生成的对应文件
+    3.修改UserController两个接口中的FileWriter的地址为自己本地
+
+    4.删除com.baizhi.logs下的所有文件。因为程序会自动存储每个用户算命的结果到自动生成的对应文件
 
 ---- 注：前端页面为我队友@xiongpu1所著 ----
 
