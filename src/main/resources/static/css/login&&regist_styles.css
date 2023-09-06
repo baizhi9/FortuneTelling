@@ -32,12 +32,11 @@ label {
 }
 .AP {
     width: 200px;
-    margin: 20px 0;
     outline: none;
     border: 0;
     padding: 10px;
     font: 900 15px '';
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 .text {
     text-align: right; /* 左对齐文本 */
